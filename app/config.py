@@ -3,7 +3,7 @@ nombre_bd = 'renegade'
 
 # usuario y conexion admin
 usuario_conexion_admin = 'root'
-contrasenia_conexion_admin = 'password'
+contrasenia_conexion_admin = 'root'
 
 # usuario y conexion administrativo
 usuario_conexion_administrativo = 'administrativo_ejemplo'
