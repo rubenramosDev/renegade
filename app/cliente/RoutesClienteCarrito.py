@@ -29,11 +29,12 @@ def eliminar_producto_carrito(id):
 
     cliente = g.user.id
     producto = id
+    carrito = request.form.get('carrito_id')
 
     query = Query()
 
     try:
-        query.eliminar_producto_carrito(USER_TYPE, cliente, product)
+        query.eliminar_producto_carrito(USER_TYPE, carrito, cliente, product)
 
         return redirect(url_for('cliente.CLIENTE_CARRITO.carrito_productos'))
     except Exception as e:
