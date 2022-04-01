@@ -1,4 +1,5 @@
-from flask import Blueprint, g, render_template, request
+from itertools import product
+from flask import Blueprint, g, redirect, render_template, request, url_for
 from ..config import USUARIO_CLIENTE as USER_TYPE
 from .Queries.CarritoProductos import QueriesCarrito as Query
 
@@ -19,5 +20,21 @@ def carrito_productos():
 
         print(carrito_usuario)
         return render_template('/cliente/micarrito.html', carrito=carrito_usuario)
+    except Exception as e:
+        raise e
+
+
+@cliente_carrito_blueprint.route("/cliente/eliminar-carrito/<id>", methods=['POST'])
+def eliminar_producto_carrito(id):
+
+    cliente = g.user.id
+    producto = id
+
+    query = Query()
+
+    try:
+        query.eliminar_producto_carrito(USER_TYPE, cliente, product)
+
+        return redirect(url_for('cliente.CLIENTE_CARRITO.carrito_productos'))
     except Exception as e:
         raise e
